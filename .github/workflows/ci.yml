@@ -8,21 +8,25 @@ on:
 jobs:
   CI_macOS:
     name: Run macOS Tests
-    runs-on: macos-latest
+    runs-on: macos-26
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Run CI_macOS Scheme
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_26.4.app/Contents/Developer
         run: set -o pipefail && xcodebuild clean test -workspace ExpenseManagerApp/ExpenseManagerAppWorkspace.xcworkspace -scheme CI_macOS -destination 'platform=macOS' | xcpretty
 
   CI_iOS:
     name: Run iOS Tests
-    runs-on: macos-latest
+    runs-on: macos-26
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Run CI_iOS Scheme
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_26.4.app/Contents/Developer
         run: set -o pipefail && xcodebuild clean test -workspace ExpenseManagerApp/ExpenseManagerAppWorkspace.xcworkspace -scheme CI_iOS -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' | xcpretty
 
