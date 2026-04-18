@@ -15,7 +15,7 @@ jobs:
 
       - name: Run CI_macOS Scheme
         env:
-          DEVELOPER_DIR: /Applications/Xcode_26.4.app/Contents/Developer
+          DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
         run: set -o pipefail && xcodebuild clean test -workspace ExpenseManagerApp/ExpenseManagerAppWorkspace.xcworkspace -scheme CI_macOS -destination 'platform=macOS' | xcpretty
 
   CI_iOS:
@@ -27,6 +27,6 @@ jobs:
 
       - name: Run CI_iOS Scheme
         env:
-          DEVELOPER_DIR: /Applications/Xcode_26.4.app/Contents/Developer
+          DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
         run: set -o pipefail && xcodebuild clean test -workspace ExpenseManagerApp/ExpenseManagerAppWorkspace.xcworkspace -scheme CI_iOS -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' | xcpretty
 
