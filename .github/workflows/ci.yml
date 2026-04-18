@@ -24,6 +24,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        
+    - name: Download iOS Simulator Runtime
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
+        run: xcodebuild -downloadPlatform iOS
 
       - name: Run CI_iOS Scheme
         env:
